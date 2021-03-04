@@ -1,13 +1,16 @@
 <form [formGroup]="form">
   <ion-item>
-    <ion-label>>Ion-input: </ion-label>
+    <ion-label>Ion-input: </ion-label>
     <ion-input
-      (ionInput)="amountHandler($event)"
-      formControlName="amount"
+      (ionInput)="amountHandler($event, 'ionInput')"
+      formControlName="ionInput"
     ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Plain input: </ion-label>
-    <input (input)="amountHandler($event)" formControlName="amount" />
+    <label>Plain input: </label>
+    <input
+      (input)="amountHandler($event, 'plainInput')"
+      formControlName="plainInput"
+    />
   </ion-item>
 </form>

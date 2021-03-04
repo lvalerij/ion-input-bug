@@ -7,13 +7,19 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class HomePage {
   form = new FormGroup({
-    amount: new FormControl(''),
+    ionInput: new FormControl(''),
+    plainInput: new FormControl(''),
   });
   constructor() {}
 
-  amountHandler(event: any) {
-    this.form.get('amount').setValue(event.target.value + '!');
-    event.target.firstChild.selectionStart = 0;
-    event.target.firstChild.selectionEnd = 0;
+  amountHandler(event: any, inputType: string) {
+    this.form.get(inputType).setValue(event.target.value + '!');
+    if (inputType === 'ionInput') {
+      event.target.firstChild.selectionStart = 0;
+      event.target.firstChild.selectionEnd = 0;
+    } else {
+      event.target.selectionStart = 0;
+      event.target.selectionEnd = 0;
+    }
   }
 }
